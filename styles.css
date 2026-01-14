@@ -1,0 +1,445 @@
+/* ========================================
+   VARIÁVEIS DE COR
+   ======================================== */
+:root {
+    --primary-blue: #0d6efd;
+    --primary-green: #198754;
+    --dark-blue: #0a5fcc;
+    --light-green: #63e6be;
+    --dark-green: #0f5132;
+    --accent-blue: #0dcaf0;
+}
+
+/* ========================================
+   ESTILOS GLOBAIS
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e8f5e9 100%);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
+   NAVBAR
+   ======================================== */
+.gradient-nav {
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-green) 100%) !important;
+    padding: 1rem 0;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.15);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: white !important;
+    letter-spacing: 0.5px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.navbar-brand i {
+    margin-right: 0.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+    margin-left: 1.5rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   CARDS
+   ======================================== */
+.card {
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(13, 110, 253, 0.2) !important;
+}
+
+.hero-card {
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.05) 0%, rgba(25, 135, 84, 0.05) 100%);
+    border-top: 4px solid var(--primary-blue);
+}
+
+.camera-card {
+    background: white;
+}
+
+.control-card {
+    background: white;
+}
+
+.results-card {
+    background: white;
+}
+
+.info-card {
+    background: white;
+    border-left: 5px solid var(--accent-blue);
+}
+
+.info-card:nth-child(2) {
+    border-left-color: var(--primary-green);
+}
+
+/* ========================================
+   CARD HEADERS
+   ======================================== */
+.gradient-header {
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+}
+
+.gradient-header-alt {
+    background: linear-gradient(90deg, var(--primary-green) 0%, var(--light-green) 100%);
+}
+
+.card-header {
+    border: none !important;
+}
+
+.card-title {
+    margin-bottom: 0;
+}
+
+.card-title i {
+    margin-right: 0.5rem;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0.75rem 1.5rem;
+}
+
+.btn-success {
+    background: linear-gradient(90deg, var(--primary-green) 0%, var(--light-green) 100%);
+    color: white;
+}
+
+.btn-success:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(25, 135, 84, 0.3);
+    color: white;
+    background: linear-gradient(90deg, var(--dark-green) 0%, var(--primary-green) 100%);
+}
+
+.btn-success:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-danger {
+    background: linear-gradient(90deg, #dc3545 0%, #ff6b6b 100%);
+    color: white;
+}
+
+.btn-danger:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(220, 53, 69, 0.3);
+    color: white;
+    background: linear-gradient(90deg, #c82333 0%, #dc3545 100%);
+}
+
+.btn-danger:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-lg {
+    font-size: 1.1rem;
+    padding: 0.9rem 1.8rem;
+}
+
+/* ========================================
+   WEBCAM
+   ======================================== */
+.webcam-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e8f5e9 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.webcam-wrapper canvas {
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.15);
+    max-width: 100%;
+    height: auto;
+}
+
+#webcam-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* ========================================
+   LABELS/RESULTADOS
+   ======================================== */
+.labels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+#label-container div {
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.1) 0%, rgba(25, 135, 84, 0.1) 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-blue);
+    font-weight: 600;
+    color: var(--dark-blue);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.1);
+}
+
+#label-container div:nth-child(even) {
+    border-left-color: var(--primary-green);
+    background: linear-gradient(135deg, rgba(25, 135, 84, 0.1) 0%, rgba(99, 230, 190, 0.05) 100%);
+    color: var(--dark-green);
+}
+
+#label-container div:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.15);
+}
+
+/* ========================================
+   ALERTAS
+   ======================================== */
+.alert {
+    border-radius: 10px;
+    border: none;
+    font-weight: 500;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, rgba(13, 202, 240, 0.1) 0%, rgba(13, 110, 253, 0.05) 100%);
+    border-left: 4px solid var(--accent-blue);
+    color: #0c63e4;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 174, 0, 0.05) 100%);
+    border-left: 4px solid #ffc107;
+    color: #664d03;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
+    border-left: 4px solid #dc3545;
+    color: #842029;
+}
+
+.alert i {
+    margin-right: 0.5rem;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+    background: linear-gradient(90deg, #1a1a1a 0%, #2d3436 100%) !important;
+    margin-top: auto;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   INFO SECTION
+   ======================================== */
+#info .card-body {
+    background: white;
+}
+
+#info .card-body h5 {
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(13, 110, 253, 0.2);
+    padding-bottom: 1rem;
+}
+
+#info .card-body ul li {
+    color: #495057;
+    line-height: 1.8;
+}
+
+#info .card-body ul li strong {
+    color: var(--primary-blue);
+}
+
+#info .card-body p {
+    color: #495057;
+    line-height: 1.6;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 1rem;
+    }
+
+    .card {
+        margin-bottom: 1.5rem;
+    }
+
+    .webcam-wrapper {
+        padding: 1rem;
+    }
+
+    .btn-lg {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+
+    .labels-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #label-container div {
+        padding: 1rem;
+    }
+
+    .hero-card {
+        padding: 1.5rem !important;
+    }
+
+    .card-body {
+        padding: 1.5rem !important;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .nav-link {
+        margin-left: 0 !important;
+        padding: 0.5rem 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-card .card-body {
+        padding: 1rem !important;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .card-body {
+        padding: 1rem !important;
+    }
+
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    #label-container div {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ========================================
+   ANIMAÇÕES
+   ======================================== */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: slideIn 0.5s ease-out;
+}
+
+.alert {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* ========================================
+   STATUS DO MODELO
+   ======================================== */
+#noLabelsMsg {
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+/* ========================================
+   EFEITOS HOVER ADICIONAIS
+   ======================================== */
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.card:active {
+    transform: translateY(-3px);
+}
+
+/* ========================================
+   ACESSIBILIDADE
+   ======================================== */
+:focus-visible {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+.btn:focus-visible {
+    outline-color: white;
+}
