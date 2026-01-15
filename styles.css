@@ -1,197 +1,345 @@
 /* ========================================
-   VARIÁVEIS DE COR
+   VARIÁVEIS DE COR (Cores que usamos em tudo!)
    ======================================== */
 :root {
+    /* Azul principal - cor primária */
     --primary-blue: #0d6efd;
+    /* Verde principal - cor secundária */
     --primary-green: #198754;
+    /* Azul mais escuro */
     --dark-blue: #0a5fcc;
+    /* Verde mais claro */
     --light-green: #63e6be;
+    /* Verde mais escuro */
     --dark-green: #0f5132;
+    /* Azul piscina (ciano) */
     --accent-blue: #0dcaf0;
 }
 
 /* ========================================
-   ESTILOS GLOBAIS
+   ESTILOS GLOBAIS (Regras para toda a página)
    ======================================== */
 * {
+    /* Sem espaço em branco no início */
     margin: 0;
+    /* Sem preenchimento */
     padding: 0;
+    /* Caixa normal */
     box-sizing: border-box;
 }
 
+/* Para o HTML e body (página inteira) */
 html, body {
     height: 100%;
+    /* Fonte bonita e legível */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Fundo com gradiente: azul claro a verde claro */
     background: linear-gradient(135deg, #f0f7ff 0%, #e8f5e9 100%);
 }
 
+/* Body é flexível para expandir */
 body {
     display: flex;
     flex-direction: column;
 }
 
 /* ========================================
-   NAVBAR
+   BARRA DE NAVEGAÇÃO (Menu no topo)
    ======================================== */
 .gradient-nav {
+    /* Fundo com gradiente: azul para verde */
     background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-green) 100%) !important;
     padding: 1rem 0;
+    /* Sombra bonita */
     box-shadow: 0 4px 15px rgba(13, 110, 253, 0.15);
 }
 
+/* Marca do site (logo) */
 .navbar-brand {
     font-size: 1.5rem;
     color: white !important;
+    /* Espaço entre as letras */
     letter-spacing: 0.5px;
+    /* Transição suave quando passar o mouse */
     transition: transform 0.3s ease;
 }
 
+/* Quando passar o mouse na marca, crescer um pouco */
 .navbar-brand:hover {
     transform: scale(1.05);
 }
 
+/* Ícone da marca */
 .navbar-brand i {
     margin-right: 0.5rem;
 }
 
+/* Links do menu */
 .navbar-nav .nav-link {
     color: rgba(255, 255, 255, 0.85) !important;
     margin-left: 1.5rem;
+    /* Transição suave */
     transition: all 0.3s ease;
+    /* Letra mais grossa */
     font-weight: 500;
 }
 
+/* Quando passar o mouse no link, ficar branco e subir */
 .navbar-nav .nav-link:hover {
     color: white !important;
     transform: translateY(-2px);
 }
 
 /* ========================================
-   CARDS
+   CARTÕES (Caixas com conteúdo)
    ======================================== */
 .card {
+    /* Cantos arredondados */
     border-radius: 15px;
+    /* Transição suave quando mudar */
     transition: all 0.3s ease;
+    /* Esconder conteúdo que sai da caixa */
     overflow: hidden;
 }
 
+/* Quando passar o mouse na caixa, subir um pouco e fazer sombra */
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(13, 110, 253, 0.2) !important;
 }
 
+/* Cartão especial no topo (herói) */
 .hero-card {
+    /* Fundo com gradiente suave */
     background: linear-gradient(135deg, rgba(13, 110, 253, 0.05) 0%, rgba(25, 135, 84, 0.05) 100%);
+    /* Linha azul no topo */
     border-top: 4px solid var(--primary-blue);
 }
 
+/* Cartão da câmera */
 .camera-card {
     background: white;
 }
 
+/* Cartão de controles */
 .control-card {
     background: white;
 }
 
+/* Cartão de resultados */
 .results-card {
     background: white;
 }
 
+/* Cartão de informações */
 .info-card {
     background: white;
+    /* Linha colorida na esquerda (azul) */
     border-left: 5px solid var(--accent-blue);
 }
 
+/* Segundo cartão de info tem linha verde */
 .info-card:nth-child(2) {
     border-left-color: var(--primary-green);
 }
 
 /* ========================================
-   CARD HEADERS
+   CABEÇALHOS DAS CAIXAS (topo colorido)
    ======================================== */
+/* Cabeçalho com gradiente azul a ciano */
 .gradient-header {
     background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
 }
 
+/* Cabeçalho alternativo com gradiente verde */
 .gradient-header-alt {
     background: linear-gradient(90deg, var(--primary-green) 0%, var(--light-green) 100%);
 }
 
+/* ========================================
+   WEBCAM (Área da câmera)
+   ======================================== */
+/* Contenedor da câmera */
+.webcam-wrapper {
+    position: relative;
+    /* Proporção quadrada */
+    aspect-ratio: 1 / 1;
+    max-width: 100%;
+    /* Sombra sutil */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    /* Fundo cinza suave */
+    background: #f8f9fa;
+    /* Cantos bem arredondados */
+    border-radius: 20px;
+}
+
+/* Canvas (tela) da câmera */
+.webcam-wrapper canvas {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 15px;
+}
+
+/* ========================================
+   GRADE DE ETIQUETAS (Resultados)
+   ======================================== */
+/* Grid para mostrar os resultados */
+.labels-grid {
+    display: grid;
+    /* 2 colunas em telas grandes */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Espaço entre os itens */
+    gap: 1.5rem;
+}
+
+/* Cada etiqueta de resultado */
+.labels-grid > div {
+    /* Fundo azul claro */
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.1) 0%, rgba(13, 202, 240, 0.1) 100%);
+    /* Padding (espaço interno) */
+    padding: 1.5rem;
+    /* Cantos arredondados */
+    border-radius: 12px;
+    /* Borda sutil azul */
+    border: 2px solid var(--accent-blue);
+    /* Fonte grande */
+    font-size: 1.1rem;
+    /* Texto centralizado */
+    text-align: center;
+    /* Letra mais grossa */
+    font-weight: 600;
+    /* Texto azul escuro */
+    color: var(--dark-blue);
+    /* Transição suave */
+    transition: all 0.3s ease;
+}
+
+/* Quando passar o mouse em um resultado */
+.labels-grid > div:hover {
+    /* Sombra e transformação */
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+    /* Fundo fica mais intenso */
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.2) 0%, rgba(13, 202, 240, 0.2) 100%);
+}
+
+/* ========================================
+   BOTÕES
+   ======================================== */
+/* Botão verde (iniciar) */
+.btn-success {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%) !important;
+    border: none;
+    /* Sombra */
+    box-shadow: 0 4px 15px rgba(25, 135, 84, 0.3);
+    /* Transição suave */
+    transition: all 0.3s ease;
+}
+
+/* Botão verde quando passar o mouse */
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(25, 135, 84, 0.4) !important;
+}
+
+/* Botão vermelho (parar) */
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #ff6b6b 100%) !important;
+    border: none;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Botão vermelho quando passar o mouse */
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4) !important;
+}
+
+/* ========================================
+   ALERTAS (Caixas de mensagem)
+   ======================================== */
+/* Alerta azul (informação) */
+.alert-info {
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.1) 0%, rgba(13, 202, 240, 0.1) 100%);
+    border: 2px solid var(--accent-blue);
+    color: var(--dark-blue);
+}
+
+/* Alerta amarelo (aviso) */
+.alert-warning {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 159, 64, 0.1) 100%);
+    border: 2px solid #ffc107;
+    color: #856404;
+}
+
+/* Alerta vermelho (erro) */
+.alert-danger {
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.1) 0%, rgba(255, 107, 107, 0.1) 100%);
+    border: 2px solid #dc3545;
+    color: #721c24;
+}
+
+/* ========================================
+   CABEÇALHO DA CAIXA (Continua...)
+   ======================================== */
+.gradient-header-alt {
+    background: linear-gradient(90deg, var(--primary-green) 0%, var(--light-green) 100%);
+}
+
+/* Cabeçalho normal */
 .card-header {
     border: none !important;
 }
 
+/* Título da caixa */
 .card-title {
     margin-bottom: 0;
 }
 
+/* Ícone do título */
 .card-title i {
     margin-right: 0.5rem;
 }
 
 /* ========================================
-   BUTTONS
+   BOTÕES (Continua...)
    ======================================== */
+/* Estilo base dos botões */
 .btn {
     border-radius: 10px;
+    /* Letra mais grossa */
     font-weight: 600;
+    /* Transição suave */
     transition: all 0.3s ease;
     border: none;
+    /* Espaço interno */
     padding: 0.75rem 1.5rem;
 }
 
-.btn-success {
-    background: linear-gradient(90deg, var(--primary-green) 0%, var(--light-green) 100%);
-    color: white;
-}
-
-.btn-success:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(25, 135, 84, 0.3);
-    color: white;
-    background: linear-gradient(90deg, var(--dark-green) 0%, var(--primary-green) 100%);
-}
-
-.btn-success:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.btn-danger {
-    background: linear-gradient(90deg, #dc3545 0%, #ff6b6b 100%);
-    color: white;
-}
-
-.btn-danger:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(220, 53, 69, 0.3);
-    color: white;
-    background: linear-gradient(90deg, #c82333 0%, #dc3545 100%);
-}
-
-.btn-danger:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
+/* Botão grande */
 .btn-lg {
     font-size: 1.1rem;
     padding: 0.9rem 1.8rem;
 }
 
-/* ========================================
-   WEBCAM
-   ======================================== */
-.webcam-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #f0f7ff 0%, #e8f5e9 100%);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+/* Botão desabilitado */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
+/* ========================================
+   WEBCAM CONTENEDOR (Continua...)
+   ======================================== */
+/* Mostrar a câmera bem bonitinha */
+#webcam-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Canvas (tela) da câmera - mais espaço interno */
 .webcam-wrapper canvas {
     border-radius: 10px;
     box-shadow: 0 8px 25px rgba(13, 110, 253, 0.15);
@@ -199,103 +347,67 @@ body {
     height: auto;
 }
 
-#webcam-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
 /* ========================================
-   LABELS/RESULTADOS
+   RESULTADOS EM GRADE (Continua...)
    ======================================== */
-.labels-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    width: 100%;
-}
-
-#label-container div {
-    background: linear-gradient(135deg, rgba(13, 110, 253, 0.1) 0%, rgba(25, 135, 84, 0.1) 100%);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border-left: 4px solid var(--primary-blue);
-    font-weight: 600;
-    color: var(--dark-blue);
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.1);
-}
-
+/* Cada resultado alternado tem cores diferentes */
 #label-container div:nth-child(even) {
     border-left-color: var(--primary-green);
     background: linear-gradient(135deg, rgba(25, 135, 84, 0.1) 0%, rgba(99, 230, 190, 0.05) 100%);
     color: var(--dark-green);
 }
 
+/* Quando passar o mouse em um resultado */
 #label-container div:hover {
     transform: translateX(5px);
     box-shadow: 0 8px 20px rgba(13, 110, 253, 0.15);
 }
 
 /* ========================================
-   ALERTAS
+   ALERTAS (Continua...)
    ======================================== */
-.alert {
-    border-radius: 10px;
-    border: none;
-    font-weight: 500;
-}
-
-.alert-info {
-    background: linear-gradient(135deg, rgba(13, 202, 240, 0.1) 0%, rgba(13, 110, 253, 0.05) 100%);
-    border-left: 4px solid var(--accent-blue);
-    color: #0c63e4;
-}
-
-.alert-warning {
-    background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 174, 0, 0.05) 100%);
-    border-left: 4px solid #ffc107;
-    color: #664d03;
-}
-
-.alert-danger {
-    background: linear-gradient(135deg, rgba(220, 53, 69, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
-    border-left: 4px solid #dc3545;
-    color: #842029;
-}
-
+/* Ícone do alerta */
 .alert i {
     margin-right: 0.5rem;
 }
 
 /* ========================================
-   FOOTER
+   RODAPÉ (Final da página)
    ======================================== */
+/* Estilo do rodapé - preto com gradiente */
 footer {
     background: linear-gradient(90deg, #1a1a1a 0%, #2d3436 100%) !important;
+    /* Aparecer no final da página */
     margin-top: auto;
+    /* Sombra no topo */
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Texto do rodapé */
 footer p {
     font-size: 0.95rem;
 }
 
 /* ========================================
-   INFO SECTION
+   SEÇÃO DE INFORMAÇÕES (Como Funciona)
    ======================================== */
+/* Corpo da seção de informações */
 #info .card-body {
     background: white;
 }
 
+/* Título da seção de informações */
 #info .card-body h5 {
     margin-bottom: 1.5rem;
+    /* Linha embaixo do título */
     border-bottom: 2px solid rgba(13, 110, 253, 0.2);
     padding-bottom: 1rem;
 }
 
+/* Itens da lista */
 #info .card-body ul li {
     color: #495057;
+    /* Espaço entre linhas */
     line-height: 1.8;
 }
 

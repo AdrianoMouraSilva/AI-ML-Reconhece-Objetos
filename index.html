@@ -1,32 +1,44 @@
 <!DOCTYPE html>
+<!-- Tipo de arquivo: é um HTML (página da internet) -->
 <html lang="pt-br">
+<!-- Cabeçalho da página - informações especiais que ninguém vê -->
 <head>
+    <!-- Configurar caracteres especiais (acentos, til, etc) -->
     <meta charset="UTF-8">
+    <!-- Deixar a página bonita em celular, tablet e computador -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Nome que aparece na aba do navegador -->
     <title>IA - Reconhecimento de Objetos</title>
     
-    <!-- Bootstrap CSS -->
+    <!-- Trazer o Bootstrap - é como um "uniforme" bonito para nossa página -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
+    <!-- Trazer ícones bonitos para decorar a página -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     
+    <!-- Trazer nossas próprias cores e estilos (azul e verde!) -->
     <link rel="stylesheet" href="styles.css">
 </head>
+<!-- Aqui começa o corpo da página - o que as pessoas veem -->
 <body>
-    <!-- Navbar -->
+    <!-- Barra de navegação no topo (menu com os botões) -->
     <nav class="navbar navbar-expand-lg navbar-dark gradient-nav shadow-sm">
         <div class="container-fluid">
+            <!-- Logo e título do topo -->
             <a class="navbar-brand fw-bold" href="#">
                 <i class="bi bi-brain"></i> IA Reconhecimento de Objetos
             </a>
+            <!-- Botão para abrir/fechar menu em celular -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!-- Menu com links da página -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    <!-- Link para ir até informações -->
                     <li class="nav-item">
                         <a class="nav-link" href="#info">Informações</a>
                     </li>
+                    <!-- Link para ir até a seção sobre -->
                     <li class="nav-item">
                         <a class="nav-link" href="#about">Sobre</a>
                     </li>
@@ -35,16 +47,18 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
+    <!-- Conteúdo principal da página -->
     <div class="container-fluid py-5">
-        <!-- Hero Section -->
+        <!-- Seção especial no topo (tipo um cartaz bonito) -->
         <div class="row mb-5">
             <div class="col-lg-12">
                 <div class="card border-0 shadow-lg hero-card">
                     <div class="card-body p-5 text-center">
+                        <!-- Título grande e bonito -->
                         <h1 class="card-title text-dark fw-bold mb-3">
                             <i class="bi bi-camera-video"></i> Reconhecedor de Objetos em Tempo Real
                         </h1>
+                        <!-- Descrição do que fazer -->
                         <p class="card-text text-muted lead">
                             Utilize inteligência artificial para identificar objetos através da sua câmera
                         </p>
@@ -53,42 +67,49 @@
             </div>
         </div>
 
-        <!-- Main Grid Layout -->
+        <!-- Grade de conteúdo (lado esquerdo câmera, lado direito informações) -->
         <div class="row g-4">
-            <!-- Camera Section -->
+            <!-- Seção esquerda: câmera de vídeo -->
             <div class="col-lg-8 col-md-12">
                 <div class="card border-0 shadow-lg h-100 camera-card">
+                    <!-- Cabeçalho da câmera com ícone -->
                     <div class="card-header gradient-header text-white py-3">
                         <h5 class="card-title mb-0">
                             <i class="bi bi-camera"></i> Câmera ao Vivo
                         </h5>
                     </div>
+                    <!-- Área onde a câmera aparece -->
                     <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
                         <div id="webcam-container" class="webcam-wrapper rounded-3">
-                            <!-- Webcam canvas will be inserted here -->
+                            <!-- A câmera vai aparecer aqui -->
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Control Panel Section -->
+            <!-- Seção direita: botões de controle -->
             <div class="col-lg-4 col-md-12">
                 <div class="card border-0 shadow-lg h-100 control-card">
+                    <!-- Cabeçalho dos controles -->
                     <div class="card-header gradient-header-alt text-white py-3">
                         <h5 class="card-title mb-0">
                             <i class="bi bi-sliders"></i> Controles
                         </h5>
                     </div>
                     <div class="card-body p-4">
+                        <!-- Botão verde para começar -->
                         <button type="button" class="btn btn-lg btn-success w-100 mb-3" onclick="init()" id="startBtn">
                             <i class="bi bi-play-circle"></i> Iniciar
                         </button>
+                        <!-- Botão vermelho para parar -->
                         <button type="button" class="btn btn-lg btn-danger w-100" onclick="stopWebcam()" id="stopBtn" disabled>
                             <i class="bi bi-stop-circle"></i> Parar
                         </button>
                         
+                        <!-- Linha separadora -->
                         <hr class="my-4">
                         
+                        <!-- Mensagem mostrando o status -->
                         <div class="alert alert-info" id="statusAlert">
                             <i class="bi bi-info-circle"></i> Clique em "Iniciar" para começar
                         </div>
@@ -97,19 +118,22 @@
             </div>
         </div>
 
-        <!-- Results Section -->
+        <!-- Seção de resultados (objetos que a IA identificou) -->
         <div class="row g-4 mt-4">
             <div class="col-lg-12">
                 <div class="card border-0 shadow-lg results-card">
+                    <!-- Cabeçalho dos resultados -->
                     <div class="card-header gradient-header text-white py-3">
                         <h5 class="card-title mb-0">
                             <i class="bi bi-bar-chart"></i> Resultados da Análise
                         </h5>
                     </div>
                     <div class="card-body p-4">
+                        <!-- Aqui aparecem os objetos reconhecidos -->
                         <div id="label-container" class="labels-grid">
-                            <!-- Predictions will be inserted here -->
+                            <!-- Os objetos vão aparecer aqui -->
                         </div>
+                        <!-- Mensagem quando nada foi analisado ainda -->
                         <div id="noLabelsMsg" class="text-center text-muted py-5">
                             <p>Nenhuma análise realizada ainda</p>
                         </div>
@@ -118,14 +142,17 @@
             </div>
         </div>
 
-        <!-- Info Section -->
+        <!-- Seção de informações (como usar) -->
         <div class="row g-4 mt-5" id="info">
+            <!-- Coluna esquerda: passos para usar -->
             <div class="col-md-6">
                 <div class="card border-0 shadow info-card">
                     <div class="card-body p-4">
+                        <!-- Título: Como Funciona -->
                         <h5 class="card-title text-success fw-bold mb-3">
                             <i class="bi bi-lightbulb"></i> Como Funciona
                         </h5>
+                        <!-- Lista de passos -->
                         <ul class="list-unstyled">
                             <li class="mb-2"><strong>1.</strong> Clique em "Iniciar"</li>
                             <li class="mb-2"><strong>2.</strong> Permita acesso à câmera</li>
@@ -135,12 +162,15 @@
                     </div>
                 </div>
             </div>
+            <!-- Coluna direita: informações sobre segurança -->
             <div class="col-md-6">
                 <div class="card border-0 shadow info-card">
                     <div class="card-body p-4">
+                        <!-- Título: Segurança -->
                         <h5 class="card-title text-primary fw-bold mb-3">
                             <i class="bi bi-shield-check"></i> Segurança & Privacidade
                         </h5>
+                        <!-- Explicação sobre segurança -->
                         <p class="card-text">
                             Seus dados são processados localmente no seu navegador. Nenhuma imagem é enviada para servidores externos.
                         </p>
@@ -150,120 +180,124 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Rodapé (final da página) -->
     <footer class="bg-dark text-white text-center py-4 mt-5">
         <div class="container">
+            <!-- Texto final -->
             <p class="mb-0">&copy; 2026 Reconhecedor de Objetos com IA. Desenvolvido com <i class="bi bi-heart-fill text-danger"></i></p>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Scripts (programas que fazem coisas acontecerem) -->
+    <!-- Bootstrap - para deixar bonito -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- TensorFlow - para fazer a inteligência artificial funcionar -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <!-- Teachable Machine - para reconhecer objetos -->
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <!-- Programa principal -->
     <script type="text/javascript">
-        // More API functions here:
-        // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
-
-        // the link to your model provided by Teachable Machine export panel
+        // Aqui estão todas as funções que fazem o programa funcionar
+        // Link do modelo de IA que usamos
         const URL = "./";
 
+        // Variáveis principais:
+        // model = o modelo de inteligência artificial
+        // webcam = a câmera do computador
+        // labelContainer = onde mostramos os resultados
+        // maxPredictions = quantos objetos podemos reconhecer
+        // isRunning = se o programa está ligado ou desligado
         let model, webcam, labelContainer, maxPredictions;
         let isRunning = false;
 
-        // Load the image model and setup the webcam
+        // Função para COMEÇAR tudo (quando clica no botão "Iniciar")
         async function init() {
             try {
+                // Mostrar mensagem de carregamento
                 document.getElementById('statusAlert').innerHTML = '<i class="bi bi-hourglass-split"></i> Carregando modelo...';
                 
+                // Onde está o modelo de IA (inteligência artificial)
                 const modelURL = URL + "model.json";
                 const metadataURL = URL + "metadata.json";
 
-                // load the model and metadata
-                // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-                // or files from your local hard drive
-                // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+                // Carregar o modelo de IA
+                // É como ensinar ao programa a reconhecer objetos
                 model = await tmImage.load(modelURL, metadataURL);
-                maxPredictions = model.getTotalClasses();
+                maxPredictions = model.getTotalClasses(); // Quantos tipos de objetos podem ser reconhecidos
 
-                // Convenience function to setup a webcam
-                const flip = true; // whether to flip the webcam
-                webcam = new tmImage.Webcam(320, 320, flip); // width, height, flip
-                await webcam.setup(); // request access to the webcam
-                await webcam.play();
-                isRunning = true;
-                window.requestAnimationFrame(loop);
+                // Pedir permissão para usar a câmera
+                const flip = true; // virar a câmera para parecer um espelho
+                webcam = new tmImage.Webcam(320, 320, flip); // largura, altura, espelhar?
+                await webcam.setup(); // pedir para usar a câmera
+                await webcam.play(); // ligar a câmera
+                isRunning = true; // programa está ligado!
+                window.requestAnimationFrame(loop); // começar o loop principal
 
-                // append elements to the DOM
+                // Limpar a tela e preparar para mostrar a câmera
                 document.getElementById("webcam-container").innerHTML = '';
                 document.getElementById("webcam-container").appendChild(webcam.canvas);
                 labelContainer = document.getElementById("label-container");
                 labelContainer.innerHTML = '';
                 
-                // Update buttons
+                // Desabilitar botão "Iniciar" e habilitar "Parar"
                 document.getElementById('startBtn').disabled = true;
                 document.getElementById('stopBtn').disabled = false;
                 
+                // Mostrar mensagem de sucesso
                 document.getElementById('statusAlert').innerHTML = '<i class="bi bi-check-circle"></i> <strong>Modelo carregado!</strong> Análise em tempo real iniciada.';
                 document.getElementById('noLabelsMsg').style.display = 'none';
                 
-                for (let i = 0; i < maxPredictions; i++) { // and class labels
+                // Preparar espaço para mostrar os resultados
+                for (let i = 0; i < maxPredictions; i++) {
                     labelContainer.appendChild(document.createElement("div"));
                 }
             } catch (error) {
+                // Se algo der errado, mostrar mensagem de erro
                 document.getElementById('statusAlert').innerHTML = `<i class="bi bi-exclamation-circle"></i> Erro: ${error.message}`;
                 document.getElementById('statusAlert').classList.remove('alert-info');
                 document.getElementById('statusAlert').classList.add('alert-danger');
             }
         }
 
+        // Função que roda sempre (tipo um coração pulsando) - analisa a câmera constantemente
         async function loop() {
             if (isRunning) {
-                webcam.update(); // update the webcam frame
-                await predict();
-                window.requestAnimationFrame(loop);
+                webcam.update(); // atualizar a imagem da câmera
+                await predict(); // analisar o que está na câmera
+                window.requestAnimationFrame(loop); // chamar esta função novamente
             }
         }
 
+        // Função para PREVER o que tem na câmera
         async function predict() {
-            // prediction
+            // Pedir para a IA analisar a imagem
             const prediction = await model.predict(webcam.canvas);
+            // Para cada tipo de objeto que a IA conhece
             for (let i = 0; i < maxPredictions; i++) {
+                // Pegar o nome do objeto e a confiança (certeza de que é aquele objeto)
                 const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                // Mostrar na tela
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
         }
 
+        // Função para PARAR a câmera (quando clica em "Parar")
         function stopWebcam() {
-            isRunning = false;
+            isRunning = false; // programa desligado
             if (webcam) {
-                webcam.stop();
+                webcam.stop(); // parar a câmera
             }
+            // Reabilitar botão "Iniciar" e desabilitar "Parar"
             document.getElementById('startBtn').disabled = false;
             document.getElementById('stopBtn').disabled = true;
+            // Mostrar mensagem de pausa
             document.getElementById('statusAlert').innerHTML = '<i class="bi bi-pause-circle"></i> Câmera parada';
             document.getElementById('statusAlert').classList.remove('alert-info');
             document.getElementById('statusAlert').classList.add('alert-warning');
         }
     </script>
-
-    async function loop() {
-        webcam.update(); // update the webcam frame
-        await predict();
-        window.requestAnimationFrame(loop);
-    }
-
-    // run the webcam image through the image model
-    async function predict() {
-        // predict can take in an image, video or canvas html element
-        const prediction = await model.predict(webcam.canvas);
-        for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
-        }
-    }
-</script>
+</body>
+</html>
 
 </body>
 </html>
