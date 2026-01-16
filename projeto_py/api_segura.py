@@ -8,7 +8,7 @@
 # Se você não tiver, não entra!
 
 from flask import Flask, request, jsonify
-from security import criar_token, verificar_token, requer_token, renovar_token
+from projeto_py.security import criar_token, verificar_token, requer_token, renovar_token
 import os
 
 # Criar a aplicação Flask
